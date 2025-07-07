@@ -12,7 +12,7 @@ Release:	11
 License:	Apache v2.0 or BSD
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/testrepository/
-Source0:	https://pypi.python.org/packages/source/t/testrepository/testrepository-%{version}.tar.gz
+Source0:	https://pypi.org/packages/source/t/testrepository/testrepository-%{version}.tar.gz
 # Source0-md5:	f648b0aceeca4fcd5f8a62eeedea289b
 URL:		https://launchpad.net/testrepository
 BuildRequires:	rpm-pythonprov
