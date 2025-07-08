@@ -2,13 +2,14 @@
 # Conditional build:
 %bcond_with	tests	# testr (python 2 only because of bzr dependency, broken as of 0.0.20)
 %bcond_without	python2 # CPython 2.x module
-%bcond_without	python3 # CPython 3.x module
+%bcond_with	python3 # CPython 3.x module
 
 Summary:	A repository of test results
 Summary(pl.UTF-8):	Repozytorium wyników testów
 Name:		python-testrepository
+# keep 0.0.20 here: 0.0.21 build system requires python3
 Version:	0.0.20
-Release:	11
+Release:	12
 License:	Apache v2.0 or BSD
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/testrepository/
@@ -133,11 +134,12 @@ rm -rf $RPM_BUILD_ROOT
 %py3_install
 %{__mv} $RPM_BUILD_ROOT%{_bindir}/testr{,-3}
 
+ln -sf testr-3 $RPM_BUILD_ROOT%{_bindir}/testr
+
 %{__rm} -r $RPM_BUILD_ROOT%{py3_sitescriptdir}/testrepository/tests
 %endif
 
 %if %{with python2}
-ln -sf testr-2 $RPM_BUILD_ROOT%{_bindir}/testr
 %endif
 
 %clean
@@ -147,7 +149,6 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc BSD COPYING NEWS README.txt doc
-%attr(755,root,root) %{_bindir}/testr
 %attr(755,root,root) %{_bindir}/testr-2
 %{py_sitescriptdir}/testrepository
 %{py_sitescriptdir}/testrepository-%{version}-py*.egg-info
@@ -157,6 +158,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -n python3-testrepository
 %defattr(644,root,root,755)
 %doc BSD COPYING NEWS README.txt doc
+%attr(755,root,root) %{_bindir}/testr
 %attr(755,root,root) %{_bindir}/testr-3
 %{py3_sitescriptdir}/testrepository
 %{py3_sitescriptdir}/testrepository-%{version}-py*.egg-info
