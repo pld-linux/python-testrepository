@@ -9,7 +9,7 @@ Summary(pl.UTF-8):	Repozytorium wyników testów
 Name:		python-testrepository
 # keep 0.0.20 here: 0.0.21 build system requires python3
 Version:	0.0.20
-Release:	12
+Release:	13
 License:	Apache v2.0 or BSD
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/testrepository/
